@@ -46,10 +46,23 @@ const Navbar = (props) => {
                 Search
               </button>
             </form> */}
+
+            <div className="d-flex">
+              <div className='bg-primary rounded mx-2' style={{height:'30px',width:'30px',cursor:'pointer'}} onClick={()=>{props.changeMode('primary')}}></div>
+            </div>
+            <div className="d-flex">
+              <div className='bg-success rounded mx-2' style={{height:'30px',width:'30px',cursor:'pointer'}} onClick={()=>{props.changeMode('success')}}></div>
+            </div>
+            <div className="d-flex">
+              <div className='bg-danger rounded mx-2' style={{height:'30px',width:'30px',cursor:'pointer'}} onClick={()=>{props.changeMode('danger')}}></div>
+            </div>
+            <div className="d-flex">
+              <div className='bg-warning rounded mx-2' style={{height:'30px',width:'30px',cursor:'pointer'}} onClick={()=>{props.changeMode('warning')}}></div>
+            </div>
             <div className="form-check form-switch">
               <input
                 className="form-check-input"
-                onClick={props.changeMode}
+                onClick={()=>{props.changeMode('null')}}
                 type="checkbox"
                 role="switch"
                 id="flexSwitchCheckDefault"

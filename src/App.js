@@ -8,10 +8,17 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-
+const removeClasses = ()=>{
+  document.body.classList.remove('dark');
+  document.body.classList.remove('light');
+  document.body.classList.remove('success');
+  document.body.classList.remove('warning');
+  document.body.classList.remove('primary');
+  document.body.classList.remove('danger');
+}
 function App() {
   const [mode, setMode] = useState("light");
-  const [alert, setAlert] = useState(null)
+  const [alert, setAlert] = useState(null);
   const showAlert = (message, type)=>{
          setAlert({
           msg:message,
@@ -21,10 +28,13 @@ function App() {
           setAlert(null);
          },1000);
   }
-  const changeMode = ()=>{
+  const changeMode = (cls)=>{
+    removeClasses();
+    console.log(cls);
+    document.body.classList.add('bg-' +cls)
     // document.title = "Dark mode enable";
     // setInterval(()=>{
-    //   document.title = "subcribe channel"
+    //  document.title = "subcribe channel";
     // },1000);
     if(mode==='light'){
       setMode("dark");
