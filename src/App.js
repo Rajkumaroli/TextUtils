@@ -6,8 +6,7 @@ import About from "./components/About";
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 function App() {
@@ -45,7 +44,7 @@ function App() {
         <Navbar title="TextUtils" mode={mode} changeMode={changeMode}/>
         <Alert alert={alert}/>
           <Routes>
-            <Route path="/about" element={<About/>} />
+            <Route path="/about" element={<About mode={mode}/>} />
             <Route path="/" element={<TextForm heading="Enter The Value For Analyze..." mode={mode} showAlert={showAlert}/>} />
           </Routes>
         </Router>

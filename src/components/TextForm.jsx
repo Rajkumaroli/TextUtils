@@ -26,6 +26,7 @@ const TextForm = (props) => {
     const text = document.getElementById("textValue");
     text.select();
     navigator.clipboard.writeText(text.value);
+    document.getSelection().removeAllRanges();
     props.showAlert("Text is copy....", "success");
   }
   //For Remove Extra Space
@@ -56,19 +57,19 @@ const TextForm = (props) => {
               onChange={changeHandle}
               rows="8"
             ></textarea>
-            <button className="btn btn-primary my-4" onClick={upperCase}>
+            <button disabled={text.length===0} className="btn btn-primary my-4" onClick={upperCase}>
               Convert Uppercase
             </button>
-            <button className="btn btn-primary my-4 mx-3" onClick={lowerCase}>
+            <button disabled={text.length===0} className="btn btn-primary my-4 mx-3" onClick={lowerCase}>
               Convert Uppercase
             </button>
-            <button className="btn btn-primary my-4 mx-3" onClick={clearText}>
+            <button disabled={text.length===0} className="btn btn-primary my-4 mx-3" onClick={clearText}>
               Clear Text
             </button>
-            <button className="btn btn-primary my-4 mx-3" onClick={copyText}>
+            <button disabled={text.length===0} className="btn btn-primary my-4 mx-3" onClick={copyText}>
               Copy Text
             </button>
-            <button className="btn btn-primary my-4 mx-3" onClick={spaceRemove}>
+            <button disabled={text.length===0} className="btn btn-primary my-4 mx-3" onClick={spaceRemove}>
               Extra Space Remove
             </button>
           </div>
@@ -77,11 +78,11 @@ const TextForm = (props) => {
         <div className="container">
           <h2>Your Text Summary</h2>
           <p>
-            Total words {text.split(" ").length} and Total Character {" "}
-            {text.length} and Consume {0.008 * text.split(" ").length} Minutes for Read text
+            Total words {text.split(" ").filter((e1)=>e1.length!==0).length} and Total Character {" "}
+            {text.length} and Consume {0.008 * text.split(" ").filter((e1)=>e1.length!==0).length} Minutes for Read text
           </p>
           <h2>Preview:</h2>
-          <p>{text=='' ? "Please Write Your Text .........." : text}</p>
+          <p>{text=='' ? "Nothing to Preview.........." : text}</p>
         </div>
       </div>
     </>
